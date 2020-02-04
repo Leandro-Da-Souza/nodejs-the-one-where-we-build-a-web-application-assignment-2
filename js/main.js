@@ -33,6 +33,7 @@ window.addEventListener('load', async () => {
         <li>
             <h4>${product.name}</h4>
             <a href="./productPage.html?id=${product._id}" >More Info</a>
+            <hr>
         </li>   
         `;
 

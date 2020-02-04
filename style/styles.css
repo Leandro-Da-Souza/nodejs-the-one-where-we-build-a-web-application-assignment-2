@@ -19,3 +19,21 @@ button:hover {
     color: whitesmoke;
     cursor: pointer;
 }
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    width: 50%;
+}
+
+#delete,
+#payBtn {
+    display: inline;
+    padding: 5px 15px;
+}

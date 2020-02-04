@@ -31,9 +31,9 @@ window.addEventListener('load', async () => {
     cartItems.forEach(item => {
         output += `
             <li data-id="${item._id}">
-                <h3>${item.name}</h3>
-                <h3>${item.price} $</h3>
+                <h3>${item.name} <span>${item.price} $<span></h3>     
                 <button id="delete">x</button>
+                <hr>
             </li>
         `;
         cartSection.innerHTML = output;

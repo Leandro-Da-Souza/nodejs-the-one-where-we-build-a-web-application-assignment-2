@@ -41,14 +41,14 @@ window.addEventListener('load', async () => {
         <h1>${product.name}</h1>
         <p>${product.price} $</p>
         <img src="${product.img}" />
-        <button id="basketAdd">Add To Basket</button>
+        <button id="basketAdd">Add To Cart</button>
     `;
 
     productPage.innerHTML = output;
 
     console.log(product);
 
-    counter.innerHTML = basket.length + ' Items In Basket';
+    counter.innerHTML = basket.length + ' Items In Cart';
 });
 
 productPage.addEventListener('click', async e => {
@@ -56,9 +56,9 @@ productPage.addEventListener('click', async e => {
     if (e.target.id === 'basketAdd') {
         let res = await addProduct(customerID, productID);
         if (res.hasOwnProperty('error')) {
-            console.log('Item Already In Basket');
+            console.log('Item Already In Cart');
             let pElem = document.createElement('p');
-            pElem.innerHTML = 'Product Already In Basket';
+            pElem.innerHTML = 'Product Already In Cart';
             productPage.appendChild(pElem);
             setTimeout(() => {
                 productPage.removeChild(pElem);
@@ -66,7 +66,7 @@ productPage.addEventListener('click', async e => {
             }, 3000);
         } else {
             let pElem = document.createElement('p');
-            pElem.innerHTML = 'Product Added To Basket!';
+            pElem.innerHTML = 'Product Added To Cart!';
             productPage.appendChild(pElem);
             setTimeout(() => {
                 productPage.removeChild(pElem);
