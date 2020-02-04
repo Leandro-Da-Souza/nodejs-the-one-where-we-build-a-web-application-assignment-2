@@ -5,12 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="./style/styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat&display=swap"
+            rel="stylesheet"
+        />
         <title>ProductPage</title>
     </head>
     <body>
         <nav>
             <a href="./index.html">Go Back To Store</a>
-            <a href="./cartPage.html">Cart</a>
+
+            <section class="basket">
+                <img
+                    src="https://img.icons8.com/material-outlined/24/000000/favorite-cart.png"
+                />
+                <a href="./cartPage.html">
+                    <span id="counter">0 Items In Cart</span>
+                </a>
+            </section>
         </nav>
         <main>
             <div id="product"></div>

@@ -39,5 +39,5 @@ window.addEventListener('load', async () => {
         productPage.innerHTML = output;
     });
 
-    counter.innerHTML = basket.length + ' Items In Basket';
+    counter.innerHTML = basket.length + ' Items In Cart';
 });

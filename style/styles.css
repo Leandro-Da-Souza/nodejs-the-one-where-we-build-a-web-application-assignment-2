@@ -1,0 +1,21 @@
+body {
+    font-family: 'Inconsolata', monospace;
+    color: #333;
+    background: whitesmoke;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    display: block;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+}
+button:hover {
+    background: #333;
+    color: whitesmoke;
+    cursor: pointer;
+}

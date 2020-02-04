@@ -1,5 +1,6 @@
 let baseURL = 'http://localhost:8080';
 let cartSection = document.querySelector('#cart ul');
+let totalSection = document.querySelector('#total');
 let customerID = 'f6a796d0-3f60-11ea-80cd-8bb22b23e2bf';
 
 const fetchBasket = async custID => {
@@ -24,18 +25,24 @@ const deleteItem = async (custID, prodID) => {
 window.addEventListener('load', async () => {
     let cartItems = await fetchBasket(customerID);
     let output = '';
+    let price = cartItems.map(item => parseInt(item.price));
+    let sum = price.reduce((x, y) => x + y);
 
     cartItems.forEach(item => {
         output += `
             <li data-id="${item._id}">
                 <h3>${item.name}</h3>
-                <h3>${item.price}</h3>
+                <h3>${item.price} $</h3>
                 <button id="delete">x</button>
             </li>
         `;
         cartSection.innerHTML = output;
     });
+
+    totalSection.innerHTML = `<p>Total: ${sum.toString()} $</p>`;
     console.log(cartItems);
+    console.log(price);
+    console.log(sum);
 });
 
 cartSection.addEventListener('click', async e => {

@@ -3,6 +3,16 @@ const baseURL = 'http://localhost:8080';
 const productID = href.slice(href.indexOf('?') + 4);
 const productPage = document.querySelector('#product');
 const customerID = 'f6a796d0-3f60-11ea-80cd-8bb22b23e2bf';
+let counter = document.querySelector('#counter');
+
+const fetchBasket = async custID => {
+    let response = await fetch(`${baseURL}/getBasket?customerID=${custID}`, {
+        method: 'GET'
+    });
+
+    let data = response.json();
+    return data;
+};
 
 const getProduct = async id => {
     const data = await fetch(`${baseURL}/products/${id}`, {
@@ -26,9 +36,10 @@ const addProduct = async (custID, prodID) => {
 
 window.addEventListener('load', async () => {
     let product = await getProduct(productID);
+    let basket = await fetchBasket(customerID);
     let output = `
         <h1>${product.name}</h1>
-        <p>${product.price} $$$</p>
+        <p>${product.price} $</p>
         <img src="${product.img}" />
         <button id="basketAdd">Add To Basket</button>
     `;
@@ -36,6 +47,8 @@ window.addEventListener('load', async () => {
     productPage.innerHTML = output;
 
     console.log(product);
+
+    counter.innerHTML = basket.length + ' Items In Basket';
 });
 
 productPage.addEventListener('click', async e => {
@@ -49,6 +62,7 @@ productPage.addEventListener('click', async e => {
             productPage.appendChild(pElem);
             setTimeout(() => {
                 productPage.removeChild(pElem);
+                window.location.reload();
             }, 3000);
         } else {
             let pElem = document.createElement('p');
@@ -56,6 +70,7 @@ productPage.addEventListener('click', async e => {
             productPage.appendChild(pElem);
             setTimeout(() => {
                 productPage.removeChild(pElem);
+                window.location.reload();
             }, 3000);
         }
     }
